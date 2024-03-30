@@ -1,0 +1,46 @@
+<div class="col-md-8">
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control search-input"
+      placeholder="Search by title"
+      [(ngModel)]="title"
+    />
+    <div class="input-group-append">
+      <button
+        class="btn btn-outline-secondary search-button"
+        type="button"
+        (click)="searchTitle()"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6 mb-3" *ngFor="let tutorial of tutorials">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ tutorial.title }}</h5>
+                <p class="card-text">{{ tutorial.description }}</p>
+                <button class="btn glassy-button" (click)="setActiveTutorial(tutorial)">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="m-3 btn btn-sm btn-dark" (click)="removeAllTutorials()">
+      Remove All
+    </button>
+  <div class="col-md-6">
+    <app-tutorial-details
+      [viewMode]="true"
+      [currentTutorial]="currentTutorial"
+    ></app-tutorial-details>
+  </div>
+</div>
